@@ -11,6 +11,10 @@ class Profile(models.Model):
 	role = models.CharField(choices=ROLES, max_length=2, default='MS')
 	phone_no = models.CharField(max_length=13, blank=True, null=True)
 
+	def __str__(self):
+		return self.user.username
+	
+
 
 @receiver(models.signals.post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
